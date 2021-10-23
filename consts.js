@@ -1,4 +1,4 @@
-const SERVERHOST = '/api/v1/'; // Базовый адресс сервера
+const SERVERHOST = 'https:///api/v1/'; // Базовый адресс сервера
 
 const coordGarage = [ // Координаты гаражей
     [52.6055795, 39.52249936],              // Липецк
