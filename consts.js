@@ -10,8 +10,6 @@ const coordGarage = [ // Координаты гаражей
 function sendReq(method, mode, callback) { // Функция для стандартного сетевого взаимодействия
     const xhr = new XMLHttpRequest();
     xhr.open(method, SERVERHOST + mode, true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.responseType = 'json';
     xhr.addEventListener('readystatechange', () => xhr.readyState === xhr.DONE && callback(JSON.parse(xhr.response)));
     xhr.send();
 }
