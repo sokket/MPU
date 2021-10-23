@@ -35,7 +35,10 @@ function getVehicles(data) { // Получает названия машин
 }
 
 function getCoords(data) { // Получает текущие координаты машин
-    data.forEach(el => routes[el.id].coords = el.pos);
+    data.forEach(el => {
+        routes[el.id].coords = el.pos;
+        renderVihocles(el.pos);
+    });
     console.log(routes); // Отладка
 }
 
