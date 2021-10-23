@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let map = L.map('map').setView([52.5886, 39.5662], 13);
     map.setView([52.5886, 39.5662], 12);
-    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+    L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png',
         {attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
 
     const coordGarage = [ // Координаты гаражей
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const renderRoad = coords => map.fitBounds(L.polyline(coords, {color: 'blue'}).addTo(map).getBounds());
     
-    roads.forEach(road => renderRoad(roads.geometry.coordinates));
+    roads.forEach(road => renderRoad(road.geometry.coordinates));
 
     /*
     Код для отрисовки линий по координатам
