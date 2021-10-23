@@ -7,3 +7,7 @@
     overflow: hidden;
     box-sizing: border-box;
 }
+
+#map {
+    height: 100vh;
+}
