@@ -1,8 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const updBtn = document.getElementById('updatePos');
-    updBtn.addEventListener('click', refreshPosVehicles);
+    const updBtn = document.getElementById('updatePos'); // Получение кнопки для обновления
+    
+    // Получение координат машин или запрос на новые данные
+    const getPosVehicles = (e = false) => sendReq('GET', e !== false ? 'refreshRoutes' : 'locations', getCoords);
+    updBtn.addEventListener('click', getPosVehicles); // Обработчик для кнопки обновить
 
-    let map = L.map('map').setView([52.5990, 39.5679], 12);
+    let map = L.map('map').setView([52.5990, 39.5679], 12); // Инициализация карты
     L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map); // Задание слоя маски - обычный
 
     // Функция для рендера иконок гаражей
@@ -14,29 +17,19 @@ document.addEventListener('DOMContentLoaded', () => {
     function getPicture(type) { // Определяет тип машину и подбирает картинку для неё
         return 1;
     }
-
-    function refreshPosVehicles(e = false) { // Получение координат машин или запрос на новые данные
-        sendReq('GET', e !== false ? 'refreshRoutes' : 'locations', getCoords);
-        console.log('Запрос/Обновление позиций машин');
-    }
-
+    
     function getVehicles(data) { // Получает названия машин
         data.forEach(el => routes[el.id].name = el.name);
         console.log(routes); // Отладка
     }
 
-    function getCoords(data) { // Получает текущие координаты машин
-        data.forEach(el => {
-            // routes[el.id].coords = el.pos;
-            renderVehicles(el.pos);
-        });
-    }
+    const getCoords = data => data.forEach(el => renderVehicles(el.pos)); // Получает текущие координаты машин   
 
     function renderRoadVehicles(data) { // Получает маршруты и их ID
         data.forEach(el => routes[el.id] = map.fitBounds(L.polyline(el.points, {color: 'green'}).addTo(map).getBounds()));
         console.log(routes); // Отладка
-        sendReq('GET', 'vehicles', getVehicles); // Получение маршрутов
-        refreshPosVehicles();
+        getPosVehicles(); // Получение позиций машин
+        sendReq('GET', 'vehicles', getVehicles); // Получение наименований машин
     }
 
     // Рендерит на карте технику
@@ -46,14 +39,14 @@ document.addEventListener('DOMContentLoaded', () => {
     
     sendReq('GET', 'streets', roads => roads.forEach(road => renderRoad(road.geometry.coordinates))); // Получение и отрисовка дорог
 
-    function updateCurLoc(data) { // Обновляет координаты машин (передвигает машины)
-        
-    }
-
-    refreshPosVehicles();
-
     // sendReq('GET', 'routes', renderRoadVehicles); // Получение маршрутов
     
+
+
+    // function updateCurLoc(data) { // Обновляет координаты машин (передвигает машины)
+        
+    // }
+
     // let server = new EventSource(SERVERHOST + 'locationsStream');
     
     // server.open = () => updBtn.classList.remove('hide'); // Отладка
