@@ -16,7 +16,22 @@ document.addEventListener('DOMContentLoaded', () => {
         [52.60272342632745, 38.48057850930626]  // Елец
     ]; 
 
+    function renderGarages(coords) {        
+        L.marker(coords, {icon: L.icon({
+            iconUrl: './garage.svg',
+            iconSize: [38, 95],
+            iconAnchor: [22, 94],
+            popupAnchor: [-3, -76]
+        })}).addTo(map);
+    } 
+
+
+
     coordGarage.forEach(el => L.marker(el).addTo(map)); // Рендер точек гаражей
+    
+    const renderRoad = coords => map.fitBounds(L.polyline(coords, {color: 'blue'}).addTo(map).getBounds());
+    
+    roads.forEach(road => renderRoad(roads.geometry.coordinates));
 
     /*
     Код для отрисовки линий по координатам
