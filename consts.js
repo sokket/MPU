@@ -16,7 +16,15 @@ function sendReq(method, mode, callback) { // Функция для станда
     xhr.send();
 }
 
-let routes = [];
+let routes = []; // Массив для машин
+
+function getPicture(type) { // Определяет тип машину и подбирает картинку для неё
+    return 1;
+}
+
+function renderVihocles(coords, type) { // Рендерит на карте технику
+    L.marker(coords,{icon:L.icon({iconUrl:'./img/'+getPicture(type)+'.png',iconSize:[60,45],popupAnchor:[-3,-76]})}).addTo(map);
+}
 
 function refreshPosVehicles(e = false) { // Получение координат машин или запрос на новые данные
     sendReq('GET', e !== false ? 'refreshRoutes' : 'locations', getCoords);

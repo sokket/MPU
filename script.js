@@ -18,12 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     sendReq('GET', 'routes', renderRoadVehicles); // Получение маршрутов
-
-    let server = new EventSource(SERVERHOST + 'locationsStream');
     
-    server.open = () => updBtn.classList.remove('hide'); // Отладка
-    server.onmessage = msg => console.log(JSON.parse(msg.data)); // Отладка
-    // позже заменить на: updateCurLoc(JSON.parse(msg.data));
+    // let server = new EventSource(SERVERHOST + 'locationsStream');
+    
+    // server.open = () => updBtn.classList.remove('hide'); // Отладка
+    // server.onmessage = msg => console.log(JSON.parse(msg.data)); // Отладка
+    // // позже заменить на: updateCurLoc(JSON.parse(msg.data));
 
-    server.onerror = err => console.error(err);
+    // server.onerror = err => console.error(err);
 });
