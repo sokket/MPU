@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const updBtn = document.getElementById('updatePos');
     updBtn.addEventListener('click', refreshPosVehicles);
 
-    let routes = [], map = L.map('map').setView([52.5990, 39.5679], 12);
+    let map = L.map('map').setView([52.5990, 39.5679], 12);
     L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map); // Задание слоя маски - обычный
 
     // Функция для рендера иконок гаражей

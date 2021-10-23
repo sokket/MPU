@@ -16,6 +16,8 @@ function sendReq(method, mode, callback) { // Функция для станда
     xhr.send();
 }
 
+let routes = [];
+
 function refreshPosVehicles(e = false) { // Получение координат машин или запрос на новые данные
     sendReq('GET', e !== false ? 'refreshRoutes' : 'locations', getCoords);
     console.log('Запрос/Обновление позиций машин');
