@@ -11,28 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     coordGarage.forEach(el => renderGarages(el)); // Отрисовка гаражей
 
-    // Рендерит на карте технику
-    const renderVehicles = (coords, type) => L.marker(coords,{icon:L.icon({iconUrl:'./img/' + getPicture(type) + '.png',iconSize:[60,45],popupAnchor:[-3,-76]})}).addTo(map);
-
-    
-    sendReq('GET', 'streets', roads => roads.forEach(road => renderRoad(road.geometry.coordinates))); // Получение и отрисовка дорог
-
-    function updateCurLoc(data) { // Обновляет координаты машин (передвигает машины)
-        
-    }
-
-    refreshPosVehicles();
-
-    // sendReq('GET', 'routes', renderRoadVehicles); // Получение маршрутов
-    
-    // let server = new EventSource(SERVERHOST + 'locationsStream');
-    
-    // server.open = () => updBtn.classList.remove('hide'); // Отладка
-    // server.onmessage = msg => console.log(JSON.parse(msg.data)); // Отладка
-    // // позже заменить на: updateCurLoc(JSON.parse(msg.data));
-
-    // server.onerror = err => console.error(err);
-
     function getPicture(type) { // Определяет тип машину и подбирает картинку для неё
         return 1;
     }
@@ -60,4 +38,27 @@ document.addEventListener('DOMContentLoaded', () => {
         sendReq('GET', 'vehicles', getVehicles); // Получение маршрутов
         refreshPosVehicles();
     }
+
+    // Рендерит на карте технику
+    const renderVehicles = (coords, type) =>
+        L.marker(coords,{icon:L.icon({iconUrl:'./img/'+getPicture(type)+'.png',iconSize:[60,45],popupAnchor:[-3,-76]})}).addTo(map);
+
+    
+    sendReq('GET', 'streets', roads => roads.forEach(road => renderRoad(road.geometry.coordinates))); // Получение и отрисовка дорог
+
+    function updateCurLoc(data) { // Обновляет координаты машин (передвигает машины)
+        
+    }
+
+    refreshPosVehicles();
+
+    // sendReq('GET', 'routes', renderRoadVehicles); // Получение маршрутов
+    
+    // let server = new EventSource(SERVERHOST + 'locationsStream');
+    
+    // server.open = () => updBtn.classList.remove('hide'); // Отладка
+    // server.onmessage = msg => console.log(JSON.parse(msg.data)); // Отладка
+    // // позже заменить на: updateCurLoc(JSON.parse(msg.data));
+
+    // server.onerror = err => console.error(err);
 });

@@ -1,4 +1,4 @@
-const SERVERHOST = 'https://project.typex.one/api/v1/'; // Базовый адресс сервера
+const SERVERHOST = 'https://routing.typex.one/api/v1/'; // Базовый адресс сервера
 
 const coordGarage = [ // Координаты гаражей
     [52.6055795, 39.52249936],              // Липецк
