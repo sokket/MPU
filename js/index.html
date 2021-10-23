@@ -3,25 +3,16 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
         <!-- <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" /> -->
         <title>Липецк</title>
-        <link rel="stylesheet" href="https://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
         <link rel="stylesheet" href="./style.css" />
+        <style>#mapid {height:100vh;}</style>
     </head>
     <body>
-        <!-- <div id="map"></div> -->
         <!-- <iframe id="map" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=39.462203979492195%2C52.512042174642346%2C39.750595092773445%2C52.664098786615114&amp;layer=mapnik" style="border: 1px solid black"></iframe> -->
-        <!-- <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script> -->
-        <!-- <script src="./script.js"></script> -->
         <div id="map"></div>
-        <script src="https://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
-        <script>
-            var map = L.map('map').setView([51.505, -0.09], 13);
-
-            L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
-        </script>
+        <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+        <script src="./script.js"></script>
     </body>
 </html>
