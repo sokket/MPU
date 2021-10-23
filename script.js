@@ -25,8 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const getCoords = data => data.forEach(el => renderVehicles(el.pos)); // Получает текущие координаты машин   
 
+    test.forEach(el=>L.circleMarker([el.lon, el.lat], { 'color': 'red' }).addTo(map));
+
     function renderRoadVehicles(data) { // Получает маршруты и их ID
-        data.forEach(el => routes[el.id] = map.fitBounds(L.polyline(el.points, {color: 'green'}).addTo(map).getBounds()));
+        data.forEach(el => routes[el.id].obj = map.fitBounds(L.polyline(el.points, {color: 'green'}).addTo(map).getBounds()));
         console.log(routes); // Отладка
         getPosVehicles(); // Получение позиций машин
         sendReq('GET', 'vehicles', getVehicles); // Получение наименований машин
