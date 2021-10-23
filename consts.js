@@ -7,9 +7,9 @@ const coordGarage = [ // Координаты гаражей
     [52.60272342632745, 38.48057850930626]  // Елец
 ];
 
-function sendReq(method, mode, callback) { // Функция для стандартного сетевого взаимодействия
+function sendReq(method, mode, callback, count = 1) { // Функция для стандартного сетевого взаимодействия
     const xhr = new XMLHttpRequest();
-    xhr.open(method, SERVERHOST + mode, true);
+    xhr.open(method, SERVERHOST + mode + ((mode === 'routes') ? '?count=' + count : ''), true);
     xhr.addEventListener('readystatechange', () => xhr.readyState === xhr.DONE && callback(JSON.parse(xhr.response)));
     xhr.send();
 }
