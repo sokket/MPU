@@ -8,5 +8,24 @@
 }
 
 #map {
+    z-index: 1;
     height: 100vh;
+}
+
+#updatePos {
+    z-index: 2;
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    cursor: pointer;
+    padding: 10px 15px;
+    background-color: darkgrey;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    user-select: none;
+}
+
+.hidden {
+    display: none;
 }
