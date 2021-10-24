@@ -16,8 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const renderVehicles = (coords, type) =>
         L.marker(coords,{icon:L.icon({iconUrl:'./img/'+getPicture(type)+'.png',iconSize:[60,45],popupAnchor:[-3,-76]})}).addTo(map);
 
-    coordGarage.forEach(el => renderGarages(el)); // Отрисовка гаражей
-
     function getPicture(type) { // Определяет тип машину и подбирает картинку для неё
         return 1;
     }
@@ -57,6 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function start(count, mode) {
         clearMap(); // Очистка карты
+        
+        coordGarage.forEach(el => renderGarages(el)); // Отрисовка гаражей
 
         if (mode) sendReq('GET', 'streets', roads =>
             roads.forEach(road => renderRoad(road.geometry.coordinates, 'blue'))); // Получение и отрисовка дорог
