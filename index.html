@@ -8,6 +8,11 @@
         <link rel="stylesheet" href="./style.css" />
     </head>
     <body>
+        <div class="group">
+            <label for="countVehicels">Количество маршрутов</label>
+            <input type="range" id="countVehicels" min="50" max="100" step="10" value="80" />
+            <span><input type="checkbox" id="useStreets">Отображать дороги</span>
+        </div>
         <button id="updatePos" class="hidden">Обновить</button>
         <div id="map"></div>
         <script src="./leaflet.js"></script>

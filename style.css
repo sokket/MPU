@@ -29,3 +29,18 @@
 .hidden {
     display: none;
 }
+
+div.group {
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    background-color: lightgrey;
+}
+
+input#useStreets {
+    margin-right: 8px;
+}
